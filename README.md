@@ -1,58 +1,5 @@
-# Welcome to your Lovable project
 
-## Project info
-
-**URL**: https://lovable.dev/projects/fdccf621-baba-45f0-9ccf-e0a695e950ca
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/fdccf621-baba-45f0-9ccf-e0a695e950ca) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
+<!-- This project is built with:
 
 - Vite
 - TypeScript
@@ -60,14 +7,100 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+Backend-supabase -->
 
-Simply open [Lovable](https://lovable.dev/projects/fdccf621-baba-45f0-9ccf-e0a695e950ca) and click on Share -> Publish.
+# SkillSwap – Peer-to-Peer Learning Platform
 
-## Can I connect a custom domain to my Lovable project?
+**Live Demo:** [https://skill-swap-peer-to-peer-learning-pl.vercel.app/](https://skill-swap-peer-to-peer-learning-pl.vercel.app/)
 
-Yes, you can!
+SkillSwap is a platform where users can **teach and learn skills from each other**. Users can create profiles, list skills they can teach and skills they want to learn, connect with peers, schedule learning sessions, chat in real-time, and rate each other.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+This project demonstrates **full-stack development, real-time communication, authentication, and UI/UX design** using modern technologies.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+---
+
+## Features
+
+### User Features
+- **Authentication**: Sign up/login with email or social accounts (Supabase Auth)
+- **Profile Management**: Add bio, skills to teach, skills to learn, profile picture
+- **Search & Connect**: Find users by skill and send learning requests
+- **Skill Listing**: Add skills you can teach and want to learn
+- **Messaging & Chat**: Real-time chat with other users (Supabase Realtime)
+- **Session Scheduling**: Schedule learning sessions with calendar integration
+- **Ratings & Reviews**: Rate peers after a session
+
+### Admin Features (Optional)
+- Manage users and content
+- View platform analytics
+
+---
+
+## Tech Stack
+
+### Frontend
+- **React** + **TypeScript**
+- **Vite** (fast development bundler)
+- **Tailwind CSS** / **shadcn-ui** (responsive UI)
+- **React Router** (multi-page navigation)
+- **FullCalendar.js** (session scheduling UI)
+
+### Backend
+- **Supabase**
+  - **PostgreSQL** database
+  - **Auth** (email & OAuth)
+  - **Realtime** (chat)
+  - **Storage** (profile pictures, session attachments)
+
+---
+
+## Database Design (Supabase)
+
+### Profiles
+- `id` (uuid, primary key)
+- `full_name` (text)
+- `bio` (text)
+- `profile_image` (text)
+- `skills_teach` (jsonb)
+- `skills_learn` (jsonb)
+- `rating` (numeric)
+- `created_at` (timestamp)
+
+### Sessions
+- `id` (uuid, primary key)
+- `teacher_id` (uuid)
+- `learner_id` (uuid)
+- `skill` (text)
+- `start_time` (timestamp)
+- `end_time` (timestamp)
+- `status` (scheduled/completed/cancelled)
+- `notes` (text)
+
+### Messages
+- `id` (serial, primary key)
+- `from_id` (uuid)
+- `to_id` (uuid)
+- `content` (text)
+- `created_at` (timestamp)
+
+### Reviews
+- `id` (serial, primary key)
+- `session_id` (uuid)
+- `from_id` (uuid)
+- `to_id` (uuid)
+- `rating` (int)
+- `comment` (text)
+- `created_at` (timestamp)
+
+---
+
+## Screenshots / Demo
+![Profile Page](screenshots/profile.png)  
+![Search & Connect](screenshots/search.png)  
+![Chat](screenshots/chat.png)  
+![Session Calendar](screenshots/calendar.png)
+
+---
+
+
+
